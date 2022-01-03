@@ -3,6 +3,7 @@ import 'package:flutter_app_watherguru/models/weather_forecast_daily.dart';
 import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
 import 'package:flutter_app_watherguru/utilities/forecast_util.dart';
 import 'package:provider/src/provider.dart';
+import 'package:spring/spring.dart';
 
 import 'data_provider_inherit.dart';
 import '../models/day_of_week.dart';
@@ -18,20 +19,23 @@ class CityDetailsTextWidget extends StatelessWidget {
     int date = (model.list?[currentDay]?.dt ?? 0) * dateConversionConst;
     var formattedDate = DateTime.fromMillisecondsSinceEpoch(date);
 
-    return Column(
-      children: [
-        Text(
-          '${model.city?.name}, ${model.city?.country}',
-          style: WGWidget.createWhiteTextStyle(30),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          Util.getFormattedDate(formattedDate),
-          style: WGWidget.createWhiteTextStyle(16),
-        ),
-      ],
+    return Spring.fadeIn(
+      animDuration: WGWidget.fadeInDuration,
+      child: Column(
+        children: [
+          Text(
+            '${model.city?.name}, ${model.city?.country}',
+            style: WGWidget.createWhiteTextStyle(30),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            Util.getFormattedDate(formattedDate),
+            style: WGWidget.createWhiteTextStyle(16),
+          ),
+        ],
+      ),
     );
   }
 }

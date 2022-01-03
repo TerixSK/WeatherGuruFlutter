@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WGWidget {
+  static Duration fadeInDuration = const Duration(milliseconds: 500);
+
   static ButtonStyle elevatedButtonStyle() {
     return ButtonStyle(
       backgroundColor:

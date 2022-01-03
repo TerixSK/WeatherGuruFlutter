@@ -4,6 +4,7 @@ import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
 import 'package:flutter_app_watherguru/models/day_of_week.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/src/provider.dart';
+import 'package:spring/spring.dart';
 
 import 'data_provider_inherit.dart';
 
@@ -42,17 +43,21 @@ class ExtraWeatherDetailsWidget extends StatelessWidget {
             .round();
     int humidity = (model.list?[currentDay]?.speed ?? 0).toInt();
     int wind = (model.list?[currentDay]?.speed ?? 0).toInt();
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _createExtraWeatherDetailsItem(
-              FontAwesomeIcons.thermometerThreeQuarters, pressure, 'mm Hg'),
-          _createExtraWeatherDetailsItem(
-              FontAwesomeIcons.cloudRain, humidity, '%'),
-          _createExtraWeatherDetailsItem(FontAwesomeIcons.wind, wind, 'm/s'),
-        ],
+
+    return Spring.fadeIn(
+      animDuration: WGWidget.fadeInDuration,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _createExtraWeatherDetailsItem(
+                FontAwesomeIcons.thermometerThreeQuarters, pressure, 'mm Hg'),
+            _createExtraWeatherDetailsItem(
+                FontAwesomeIcons.cloudRain, humidity, '%'),
+            _createExtraWeatherDetailsItem(FontAwesomeIcons.wind, wind, 'm/s'),
+          ],
+        ),
       ),
     );
   }
