@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
 import 'package:provider/src/provider.dart';
 
-class SelectCityTextField extends StatelessWidget {
-  const SelectCityTextField({Key? key}) : super(key: key);
+class SelectCityTextFieldWidget extends StatelessWidget {
+  const SelectCityTextFieldWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

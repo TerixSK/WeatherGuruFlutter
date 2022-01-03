@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/screens/geolocation_screen.dart';
 import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
 import 'package:flutter_app_watherguru/widgets/bubble_button_animation_image_widget.dart';
-import 'package:spring/spring.dart';
+import 'package:flutter_app_watherguru/widgets/start_button_widget.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -39,35 +38,12 @@ class _StartScreenState extends State<StartScreen> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 20.0),
-                    const StartButton()
+                    const StartButtonWidget()
                   ],
                 ),
               ),
             )),
       ),
     );
-  }
-}
-
-class StartButton extends StatelessWidget {
-  const StartButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: () {
-          var route = MaterialPageRoute(
-              builder: (context) => const GeolocationScreen());
-          Navigator.push(context, route);
-        },
-        style: WGWidget.elevatedButtonStyle(),
-        child: SizedBox(
-          height: 50.0,
-          width: 160.0,
-          child: Center(
-            child: Text('Start',
-                style: WGWidget.createWhiteTextStyle(30, isBold: true)),
-          ),
-        ));
   }
 }

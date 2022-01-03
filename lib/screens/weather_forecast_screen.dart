@@ -119,7 +119,7 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: const [
                                   CityDetailsTextWidget(),
-                                  TemperatureDetails(),
+                                  TemperatureDetailsWidget(),
                                   ExtraWeatherDetailsWidget(),
                                   WeatherForecastListViewWidget()
                                 ],

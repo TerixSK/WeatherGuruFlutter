@@ -27,9 +27,9 @@ class _SelectCityState extends State<SelectCity> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                SelectCityTextField(),
+                SelectCityTextFieldWidget(),
                 SizedBox(height: 20.0),
-                SelectCityButton()
+                SelectCityButtonWidget()
               ],
             ),
           ),

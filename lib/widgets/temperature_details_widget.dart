@@ -7,8 +7,8 @@ import 'package:spring/spring.dart';
 
 import 'data_provider_inherit.dart';
 
-class TemperatureDetails extends StatelessWidget {
-  const TemperatureDetails({Key? key}) : super(key: key);
+class TemperatureDetailsWidget extends StatelessWidget {
+  const TemperatureDetailsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
