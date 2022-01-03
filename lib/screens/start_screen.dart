@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_watherguru/screens/geolocation_screen.dart';
 import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
+import 'package:flutter_app_watherguru/widgets/bubble_button_animation_image_widget.dart';
 import 'package:spring/spring.dart';
 
 class StartScreen extends StatefulWidget {
@@ -11,8 +12,6 @@ class StartScreen extends StatefulWidget {
 }
 
 class _StartScreenState extends State<StartScreen> {
-  final _controller = SpringController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +25,8 @@ class _StartScreenState extends State<StartScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spring.bubbleButton(
-                      springController: _controller,
-                      onTap: () {
-                        _controller.play();
-                      },
-                      child: Image.asset('assets/images/cartoonCloud.png',
-                          height: 200.0, width: 200.0),
-                    ),
+                    BubbleButtonAnimationImageWidget(
+                        imagePath: 'assets/images/cartoonHappyCloud.png'),
                     Text(
                       'Hello! Welcome to WeatherGuru!',
                       style: WGWidget.createWhiteTextStyle(40, isBold: true),

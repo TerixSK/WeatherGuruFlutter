@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_watherguru/api/weather_api.dart';
 import 'package:flutter_app_watherguru/main.dart';
@@ -99,40 +101,42 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
       ),
       body: Center(
         child: Container(
-          color: WGColors.backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FutureBuilder<WeatherForecast>(
-                future: _forecastObject,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return DataProvider(
-                        model: snapshot.data as WeatherForecast,
-                        child: ChangeNotifierProvider<DayOfWeek>(
-                          create: (context) => DayOfWeek(),
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 100.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
-                                CityDetailsTextWidget(),
-                                TemperatureDetails(),
-                                ExtraWeatherDetailsWidget(),
-                                WeatherForecastListViewWidget()
-                              ],
+            color: WGColors.backgroundColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FutureBuilder<WeatherForecast>(
+                  future: _forecastObject,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return DataProvider(
+                          model: snapshot.data as WeatherForecast,
+                          child: ChangeNotifierProvider<DayOfWeek>(
+                            create: (context) => DayOfWeek(),
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 100.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: const [
+                                  CityDetailsTextWidget(),
+                                  TemperatureDetails(),
+                                  ExtraWeatherDetailsWidget(),
+                                  WeatherForecastListViewWidget()
+                                ],
+                              ),
                             ),
-                          ),
-                        ));
-                  } else {
-                    return const Center(
-                        child: SpinKitWave(
-                      color: WGColors.mainColor,
-                      size: 80.0,
-                    ));
-                  }
-                }),
-          ),
-        ),
+                          ));
+                    } else if (snapshot.hasError) {
+                      return const Center(child: Text('Error'));
+                    } else {
+                      return const Center(
+                          child: SpinKitWave(
+                        color: WGColors.mainColor,
+                        size: 80.0,
+                      ));
+                    }
+                  }),
+            )),
       ),
     );
   }
