@@ -1,7 +1,7 @@
+import 'package:weather_guru/utilities/wg_widgets.dart';
+import 'package:weather_guru/widgets/bubble_button_animation_image_widget.dart';
+import 'package:weather_guru/widgets/start_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
-import 'package:flutter_app_watherguru/widgets/bubble_button_animation_image_widget.dart';
-import 'package:flutter_app_watherguru/widgets/start_button_widget.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);

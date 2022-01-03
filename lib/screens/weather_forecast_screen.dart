@@ -1,21 +1,22 @@
 import 'dart:async';
 
+import 'package:weather_guru/api/weather_api.dart';
+import 'package:weather_guru/models/day_of_week.dart';
+import 'package:weather_guru/models/weather_forecast_daily.dart';
+import 'package:weather_guru/utilities/geolocation.dart';
+import 'package:weather_guru/widgets/city_details_text_widget.dart';
+import 'package:weather_guru/widgets/data_provider_inherit.dart';
+import 'package:weather_guru/widgets/extra_weather_details_widget.dart';
+import 'package:weather_guru/widgets/select_city_error_widget.dart';
+import 'package:weather_guru/widgets/temperature_details_widget.dart';
+import 'package:weather_guru/widgets/weather_forecast_list_view_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/api/weather_api.dart';
-import 'package:flutter_app_watherguru/main.dart';
-import 'package:flutter_app_watherguru/models/weather_forecast_daily.dart';
-import 'package:flutter_app_watherguru/screens/select_sity_screen.dart';
-import 'package:flutter_app_watherguru/utilities/geolocation.dart';
-import 'package:flutter_app_watherguru/widgets/city_details_text_widget.dart';
-import 'package:flutter_app_watherguru/widgets/data_provider_inherit.dart';
-import 'package:flutter_app_watherguru/models/day_of_week.dart';
-import 'package:flutter_app_watherguru/widgets/extra_weather_details_widget.dart';
-import 'package:flutter_app_watherguru/widgets/temperature_details_widget.dart';
-import 'package:flutter_app_watherguru/widgets/weather_forecast_list_view_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
-import '../utilities/WGWidgets.dart';
+import '../main.dart';
+import '../utilities/wg_widgets.dart';
+import 'select_sity_screen.dart';
 
 class WeatherForecastScreen extends StatefulWidget {
   const WeatherForecastScreen({Key? key, required this.startLocation})
@@ -44,6 +45,18 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
         WeatherApi().fetchWeatherForecast(location: widget.startLocation);
 
     MyApp.isLogin = true;
+  }
+
+  void goSelectCityScreen(BuildContext context) async {
+    var route = MaterialPageRoute(builder: (context) => const SelectCity());
+    var selectedName = await Navigator.push(context, route);
+    if (selectedName != null) {
+      setState(() {
+        _cityName = selectedName;
+        _forecastObject =
+            WeatherApi().fetchWeatherForecast(cityName: _cityName);
+      });
+    }
   }
 
   @override
@@ -83,20 +96,8 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.location_city, color: WGColors.mainColor),
-            onPressed: () async {
-              var route =
-                  MaterialPageRoute(builder: (context) => const SelectCity());
-              var selectedName = await Navigator.push(context, route);
-              if (selectedName != null) {
-                setState(() {
-                  _cityName = selectedName;
-                  _forecastObject =
-                      WeatherApi().fetchWeatherForecast(cityName: _cityName);
-                });
-              }
-            },
-          ),
+              icon: const Icon(Icons.location_city, color: WGColors.mainColor),
+              onPressed: () => goSelectCityScreen(context)),
         ],
       ),
       body: Center(
@@ -127,7 +128,9 @@ class _WeatherForecastScreenState extends State<WeatherForecastScreen> {
                             ),
                           ));
                     } else if (snapshot.hasError) {
-                      return const Center(child: Text('Error'));
+                      return SelectCityErrorWidget(
+                          buttonAction: (BuildContext context) =>
+                              goSelectCityScreen(context));
                     } else {
                       return const Center(
                           child: SpinKitWave(

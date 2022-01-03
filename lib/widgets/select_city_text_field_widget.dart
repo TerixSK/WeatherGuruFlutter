@@ -1,5 +1,6 @@
+import 'package:weather_guru/utilities/wg_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 
 class SelectCityTextFieldWidget extends StatelessWidget {

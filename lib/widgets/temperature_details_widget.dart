@@ -1,7 +1,8 @@
+import 'package:weather_guru/models/day_of_week.dart';
+import 'package:weather_guru/models/weather_forecast_daily.dart';
+import 'package:weather_guru/utilities/wg_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/models/weather_forecast_daily.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
-import 'package:flutter_app_watherguru/models/day_of_week.dart';
+// ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'package:spring/spring.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/screens/geolocation_screen.dart';
 
+import 'screens/geolocation_screen.dart';
 import 'screens/start_screen.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'WeatherGuru',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

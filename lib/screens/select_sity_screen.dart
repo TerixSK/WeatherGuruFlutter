@@ -1,7 +1,8 @@
+import 'package:weather_guru/utilities/wg_widgets.dart';
+import 'package:weather_guru/widgets/select_city_button_widget.dart';
+import 'package:weather_guru/widgets/select_city_text_field_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
-import 'package:flutter_app_watherguru/widgets/select_city_button_widget.dart';
-import 'package:flutter_app_watherguru/widgets/select_city_text_field_widget.dart';
+
 import 'package:provider/provider.dart';
 
 class SelectCity extends StatefulWidget {

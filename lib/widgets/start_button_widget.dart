@@ -1,6 +1,6 @@
+import 'package:weather_guru/screens/geolocation_screen.dart';
+import 'package:weather_guru/utilities/wg_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/screens/geolocation_screen.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
 
 class StartButtonWidget extends StatelessWidget {
   const StartButtonWidget({Key? key}) : super(key: key);

@@ -1,8 +1,10 @@
+import 'package:weather_guru/utilities/geolocation.dart';
+import 'package:weather_guru/utilities/wg_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_watherguru/screens/weather_forecast_screen.dart';
-import 'package:flutter_app_watherguru/utilities/WGWidgets.dart';
-import 'package:flutter_app_watherguru/utilities/geolocation.dart';
+
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'weather_forecast_screen.dart';
 
 class GeolocationScreen extends StatefulWidget {
   const GeolocationScreen({Key? key}) : super(key: key);

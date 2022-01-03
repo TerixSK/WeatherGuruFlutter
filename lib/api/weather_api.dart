@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'dart:convert';
 
-import 'package:flutter_app_watherguru/models/weather_forecast_daily.dart';
-import 'package:flutter_app_watherguru/utilities/constants.dart';
-import 'package:flutter_app_watherguru/utilities/geolocation.dart';
+import 'package:weather_guru/models/weather_forecast_daily.dart';
+import 'package:weather_guru/utilities/constants.dart';
+import 'package:weather_guru/utilities/geolocation.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherApi {
